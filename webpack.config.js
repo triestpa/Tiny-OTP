@@ -3,9 +3,8 @@ const webpack = require("webpack");
 const BabiliPlugin = require("babili-webpack-plugin");
 
 module.exports = {
-    entry: "./src/otp.js",
+    entry: "./otp.js",
     output: {
-        path: path.resolve(__dirname, "dist"),
         filename: "otp.min.js"
     },
     module: {
