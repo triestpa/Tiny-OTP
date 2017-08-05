@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PRNG Distribution Test</title>
+</head>
+<body>
+  <div id="container"></div>
+  <h3 style="text-align: center;">OTPs Generated: <strong id="count"></strong></h3>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+const countElem = document.getElementById('count')
+
+// Generate base histogram chart
+const chart = Highcharts.chart('container', {
+  chart: { type: 'column' },
+  legend: { enabled: false },
+  title: { text: 'Psuedorandom OTP Histogram' },
+  yAxis: [{
+    title: { text: 'Count' }
+  }],
+  series: [{
+    name: 'Generated Numbers in Bin',
+    type: 'column',
+    data: [],
+    groupPadding: 0,
+  }]
+})
+
+// Start PRNG webworker
+const prngWorker = new Worker('distributionWorker.js');
+
+// Process webworker data
+prngWorker.onmessage = function(e) {
+  let newData = e.data
+
+  // Calculate the total number of psuedo-random numbers generated
+  let total = Object.values(newData).reduce((sum, value) => sum + value)
+  countElem.textContent = total.toLocaleString()
+
+  // Prepare the data for charting
+  let formattedData = Object.keys(newData).map(key => [ parseInt(key), newData[key] ])
+
+  // Update chart
+  chart.series[0].setData(formattedData)
+}
+</script>
+</body>
+</html>
