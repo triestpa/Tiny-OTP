@@ -23,13 +23,13 @@ class OTP {
      * A TOTP is an HOTP that uses a time interval as the counter.
      * @returns {string} A six-digit OTP value
      */
-    getTOTP () {
+    getTOTP (digits = 6) {
       // Get the current epoch, rounded to intervals of 30 seconds
       const now = Math.floor((new Date()).getTime() / 1000)
       const epoch = Math.floor(now / 30)
 
       // Calcule an HOTP using the epoch as the counter
-      return this.getHOTP(String(epoch))
+      return this.getHOTP(String(epoch), digits)
     }
 
     /**
@@ -37,7 +37,7 @@ class OTP {
      * @param {string} counter A distinct counter value used to generate an OTP with the secret.
      * @returns {string} A six-digit OTP value
      */
-    getHOTP (counter) {
+    getHOTP (counter, digits = 6) {
       // Calculate an HMAC encoded value from the secret and counter values
       const encodedCounter = this.encodeCounter(counter)
       const hmacDigest = this.getHmacDigest(this.secret, encodedCounter)
@@ -46,7 +46,7 @@ class OTP {
       const binaryCode = this.getBinaryCode(hmacDigest)
 
       // Convert the binary code to a number between 0 and 1,000,000
-      const hotp = this.convertToHotp(binaryCode, 6)
+      const hotp = this.convertToHotp(binaryCode, digits)
 
       return hotp
     }

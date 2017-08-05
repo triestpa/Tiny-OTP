@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PRNG Distribution Test</title>
+</head>
+<body>
+<script src="https://cdn.patricktriest.com/vendor/otp/otp.min.js"></script>
+<script>
+// Generate a random secret
+const secret = OTP.getRandomInt(0, 10 ** 12)
+
+// Initialize OTP generator
+const generator = new OTP(secret)
+
+// Get the current 6-digit OTP value.
+// This value will change every 30 seconds.
+let totp = generator.getTOTP(8)
+
+// Get current 6-digit OTP value.
+// This value will be change based on the provided counter parameter value.
+let hotp = generator.getHOTP(5, 8)
+
+console.log(totp)
+console.log(hotp)
+</script>
+</body>
+</html>

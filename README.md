@@ -1,5 +1,5 @@
 # Tiny-OTP
-## The browser-based Google-Authenticator compatible OTP generator.
+### The browser-based Google-Authenticator compatible OTP generator.
 
 Tiny-OTP is a tiny(4kb) Javascript library that can generate [RFC 4226](https://tools.ietf.org/html/rfc6238) compliant HMAC-based one-time passwords (HOTPs), and [RFC 6238](https://tools.ietf.org/html/rfc6238) compliant time-based one-time passwords (TOTPs).
 
@@ -17,7 +17,7 @@ const generator = new OTP(secret)
 let totp = generator.getTOTP()
 
 // Get current 6-digit HOTP value.
-// This value will be change based on the provided counter parameter value.
+// This value will change based on the provided counter parameter value.
 let hotp = generator.getHOTP(5)
 ```
 
@@ -54,8 +54,19 @@ To export the secret in base32 encoding.
 generator.getBase32Secret()
 ```
 
+#### Extra digits
+Tiny-OTP generates 6-digit OTPs by default, but can also generate 8-digit OTPs.
+The number of digits is an optional parameter of the TOTP and HOTP methods.
 
-#### Distribution Test
+```javascript
+// Get the current 8-digit TOTP value.
+let totp = generator.getTOTP(8)
+
+// Get 8-digit HOTP value, for counter = 5.
+let hotp = generator.getHOTP(5, 8)
+```
+
+### Distribution Test
 To verify that the OTP generates a valid random(flat) distribution of possible 6-digit OTP values, the `test` directory contains a simple webpage + webworker that will generate batches of 50,000 OTPs, and continuously plot the distribution.  To view this visualization, run `http-server .` and open `http://localhost/test/`.
 
 You can also view this distribution test at [https://cdn.patricktriest.com/vendor/otp/test/index.html](https://cdn.patricktriest.com/vendor/otp/test/index.html)
