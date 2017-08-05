@@ -58,4 +58,4 @@ generator.getBase32Secret()
 #### Distribution Test
 To verify that the OTP generates a valid random(flat) distribution of possible 6-digit OTP values, the `test` directory contains a simple webpage + webworker that will generate batches of 50,000 OTPs, and continuously plot the distribution.  To view this visualization, run `http-server .` and open `http://localhost/test/`.
 
-You can also view this distribution test at `https://cdn.patricktriest.com/vendor/otp/test/index.html`
+You can also view this distribution test at [https://cdn.patricktriest.com/vendor/otp/test/index.html](https://cdn.patricktriest.com/vendor/otp/test/index.html)
