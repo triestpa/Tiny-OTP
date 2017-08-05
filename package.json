@@ -1,7 +1,7 @@
 {
   "name": "tiny-otp",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Browser-based, Google Authenticator compatible time-based one-time-password(TOTP) generator. 4kb minified and gzipped.",
   "main": "otp.js",
   "scripts": {
     "build": "webpack",
@@ -17,7 +17,7 @@
     "babel-core": "6.25.0",
     "babel-loader": "7.1.1",
     "babel-preset-env": "1.6.0",
-    "babel-preset-es2016": "6.24.1",
+    "babel-preset-es2017": "6.24.1",
     "babili-webpack-plugin": "0.1.2",
     "webpack": "3.4.1"
   }

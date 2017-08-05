@@ -5,7 +5,8 @@ const BabiliPlugin = require("babili-webpack-plugin");
 module.exports = {
     entry: "./otp.js",
     output: {
-        filename: "otp.min.js"
+        filename: "otp.min.js",
+        library: 'OTP',
     },
     module: {
         loaders: [
@@ -13,11 +14,11 @@ module.exports = {
                 loader: "babel-loader",
                 include: [ path.resolve(__dirname, "src"), ],
                 test: /\.js$/,
-                query: { presets: ['es2016'] }
+                query: { presets: ['es2017'] }
             },
         ]
     },
     plugins: [
-        new BabiliPlugin({})
+      //  new BabiliPlugin({})
     ]
 };
