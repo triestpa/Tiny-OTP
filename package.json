@@ -1,6 +1,6 @@
 {
   "name": "tiny-otp",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Browser-based, Google Authenticator compatible time-based one-time-password(TOTP) generator. 4kb minified and gzipped.",
   "main": "otp.js",
   "scripts": {
