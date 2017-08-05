@@ -3,6 +3,8 @@
 
 Tiny-OTP is a tiny(4kb) Javascript library that can generate [RFC 4226](https://tools.ietf.org/html/rfc6238) compliant HMAC-based one-time passwords (HOTPs), and [RFC 6238](https://tools.ietf.org/html/rfc6238) compliant time-based one-time passwords (TOTPs).
 
+This is the core library powering the [Open-OTP](https://otp.patricktriest.com) project.  To see an example of a full web app using Tiny-OTP (with QRCode generation for easy Google Authenticator integration), visit the [Open-OTP github repository](https://github.com/triestpa/Open-OTP).
+
 ### Usage
 
 ```javascript
