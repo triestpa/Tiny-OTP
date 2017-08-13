@@ -7,8 +7,8 @@
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "patrick.triest@gmail.com",
+  "license": "MIT",
   "dependencies": {
     "base32.js": "0.1.0",
     "jssha": "2.3.1"
